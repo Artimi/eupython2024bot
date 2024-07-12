@@ -70,7 +70,7 @@ def calculate_new_position(lat, lon, heading, distance):
     new_lat = math.degrees(new_lat_rad)
     new_lon = math.degrees(new_lon_rad)
 
-    return new_lat, new_lon
+    return round(new_lat, 2), round(new_lon, 2)
 
 
 def ray(start, goal, point_distance=0.04394) -> tuple[np.array, np.array]:
@@ -201,7 +201,7 @@ def astar(latitude, longitude, checkpoint, world_map, forecast, start_heading):
     while (
         (current := frontier.get())
         and cost_so_far[current] < LOOKAHEAD_THRESHOLD
-        and loops < 5000
+        and loops < 2000
     ):
         if are_we_there_yet(*current, *finish):
             finish_found = True
